@@ -12,6 +12,8 @@ Nabid Ahamed Noushad [https://github.com/nabid-ahamed]
 
 Taif Tanjil Srabon
 
+All members contributed equally to the design, development, and testing of the project.
+
 ✨ Key Features
 PlayerVault is built with a focus on security, functionality, and user experience.
 
