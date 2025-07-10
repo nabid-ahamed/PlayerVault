@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "My Profile";
+
+    var username = ViewBag.Username ?? Context.Session.GetString("Username");
+    var email = ViewBag.Email ?? Context.Session.GetString("Email");
+}
+
+<h2>👤 My Profile</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<div class="card p-3 mb-4">
+    <h4>@username</h4>
+    <p><strong>Email:</strong> @email</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="alert alert-success">
+            ✅ Approved Players: <strong>@ViewBag.ApprovedCount</strong>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-warning">
+            ⏳ Pending Players: <strong>@ViewBag.PendingCount</strong>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-controller="Players" asp-action="Create" class="btn btn-success me-2">➕ Add New Player</a>
+    <a asp-action="Stats" class="btn btn-info me-2">📊 View My Stats</a>
+    <a asp-action="Edit" class="btn btn-warning">⚙️ Account Settings</a>
+</div>

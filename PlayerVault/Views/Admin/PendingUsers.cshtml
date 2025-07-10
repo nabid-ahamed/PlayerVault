@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PlayerVault.Models.User>
+
+<h2>Pending User Approvals</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>
+                    <a href="/Admin/ApproveUser/@user.Id" class="btn btn-success">Approve</a>
+                    <a href="/Admin/RejectUser/@user.Id" class="btn btn-danger">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

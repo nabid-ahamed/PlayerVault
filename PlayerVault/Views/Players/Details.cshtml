@@ -1,0 +1,18 @@
+﻿@model PlayerVault.Models.Player
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Player Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <p><strong>Nationality:</strong> @Model.Nationality</p>
+    <p><strong>Age:</strong> @Model.Age</p>
+    <p><strong>Position:</strong> @Model.Position</p>
+    <p><strong>Market Value:</strong> €@Model.MarketValue M</p>
+
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

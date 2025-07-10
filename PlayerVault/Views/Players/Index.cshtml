@@ -1,0 +1,105 @@
+﻿@model IEnumerable<PlayerVault.Models.Player>
+@{
+    ViewData["Title"] = "Players";
+    var pendingPlayers = ViewBag.PendingPlayers as List<PlayerVault.Models.Player>;
+
+}
+
+<h1>Player Vault</h1>
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">+ Add New Player</a>
+</p>
+
+<form asp-controller="Players" asp-action="Index" method="get">
+    <p>
+        Search: <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" style="width: 200px; display: inline-block;" />
+
+        Filter by Position:
+        @Html.DropDownList("playerPosition", (SelectList)ViewData["PositionFilter"], "-- All Positions --", new { @class = "form-control", style = "width: 200px; display: inline-block;" })
+
+        <input type="submit" value="Apply" class="btn btn-primary" />
+    </p>
+</form>
+
+
+
+<table class="table table-bordered table-hover table-striped">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>Age</th>
+            <th>Position</th>
+            <th>Market Value (€M)</th>
+            
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            <tr>
+                <td>@player.Name</td>
+                <td>@player.Nationality</td>
+                <td>@player.Age</td>
+                <td>@player.Position</td>
+                <td>@player.MarketValue</td>
+                
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@player.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@player.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@player.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-outline-secondary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#pendingPlayersCollapse" aria-expanded="false" aria-controls="pendingPlayersCollapse">
+    ⏳ Show Pending Players
+</button>
+
+<div class="collapse" id="pendingPlayersCollapse">
+    <div class="card card-body bg-light">
+        <h4 class="text-muted">⏳ Pending Approval</h4>
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+					<th>Name</th>
+                    <th>Nationality</th>
+					<th>Age</th>
+                    <th>Position</th>
+                    <th>Market Value</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (pendingPlayers != null && pendingPlayers.Any())
+                {
+                    foreach (var player in pendingPlayers)
+                    {
+                        <tr class="text-muted" style="opacity: 0.6;">
+                            <td>@player.Name</td>
+                            <td>@player.Nationality</td>
+                            <td>@player.Age</td>
+                            <td>@player.Position</td>
+                            <td>@player.MarketValue</td>
+                            <td><span class="badge bg-warning text-dark">Pending</span></td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">No pending players.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

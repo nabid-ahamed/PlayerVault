@@ -1,0 +1,121 @@
+﻿/* Base Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+    /* Navbar */
+    body.dark-mode .navbar {
+        background-color: #1f1f1f;
+    }
+
+    /* Text Elements */
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode h4,
+    body.dark-mode h5,
+    body.dark-mode h6,
+    body.dark-mode label,
+    body.dark-mode p,
+    body.dark-mode span,
+    body.dark-mode .nav-link,
+    body.dark-mode .form-label {
+        color: #e0e0e0 !important;
+    }
+
+    /* Inputs & Forms */
+    body.dark-mode .form-control,
+    body.dark-mode input,
+    body.dark-mode select,
+    body.dark-mode textarea {
+        background-color: #2c2c2c !important;
+        color: #e0e0e0 !important;
+        border: 1px solid #555 !important;
+    }
+
+    /* Buttons */
+    body.dark-mode .btn-outline-secondary {
+        color: #e0e0e0;
+        border-color: #555;
+    }
+
+        body.dark-mode .btn-outline-secondary:hover {
+            background-color: #333;
+            border-color: #555;
+        }
+
+    body.dark-mode .btn-primary {
+        background-color: #1976d2;
+        border-color: #1565c0;
+    }
+
+    /* Dropdown Menu */
+    body.dark-mode .dropdown-menu {
+        background-color: #2c2c2c;
+        border-color: #444;
+    }
+
+    body.dark-mode .dropdown-item {
+        color: #e0e0e0;
+    }
+
+        body.dark-mode .dropdown-item:hover {
+            background-color: #3e3e3e;
+            color: #ffffff;
+        }
+
+    /* Cards & Alerts */
+    body.dark-mode .card {
+        background-color: #1e1e1e;
+        border: 1px solid #444;
+    }
+
+    body.dark-mode .alert {
+        background-color: #2c2c2c;
+        color: #e0e0e0;
+        border-color: #444;
+    }
+
+
+    /*
+========================================
+--- ✨ Improved Table Styles ✨ ---
+========================================
+*/
+    body.dark-mode .table {
+        --bs-table-bg: #212529; /* Dark background for tables */
+        --bs-table-color: #e0e0e0; /* Bright text for readability */
+        --bs-table-border-color: #444; /* Visible but not harsh borders */
+        --bs-table-striped-bg: #2c3034; /* Contrasting stripe color */
+        --bs-table-hover-bg: #32383e; /* Hover effect color */
+    }
+
+        /* Ensures all text within table cells is readable */
+        body.dark-mode .table td,
+        body.dark-mode .table th {
+            color: var(--bs-table-color);
+        }
+
+        /* Make table headers distinct */
+        body.dark-mode .table thead th {
+            background-color: #343a40;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Make links in tables stand out and be readable */
+        body.dark-mode .table a {
+            color: #a6cfff; /* A brighter blue for links */
+            font-weight: 500;
+        }
+
+            body.dark-mode .table a:hover {
+                color: #d1eaff;
+            }
+
+    /* Style for the "Pending" status badge */
+    body.dark-mode .badge.bg-warning {
+        background-color: #614a19 !important;
+        color: #ffde8a !important;
+    }

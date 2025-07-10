@@ -1,0 +1,61 @@
+/* --- 1. Modern Font & Color Palette --- */
+:root {
+    --primary-color: #0d6efd; /* Bootstrap Blue */
+    --primary-hover: #0a58ca; /* Darker Blue for Hover */
+    --text-color: #212529; /* Dark Gray for Text */
+    --bg-color: #ffffff; /* White Background */
+    --light-gray: #f8f9fa; /* Light Gray for Cards/Tables */
+    --border-color: #dee2e6;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* --- 2. General Body & Link Styling --- */
+body {
+    font-family: 'Inter', sans-serif; /* APPLY THE GOOGLE FONT */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin-bottom: 60px; /* For sticky footer */
+    -webkit-font-smoothing: antialiased; /* Smoother text rendering */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.2s ease-in-out;
+}
+
+    a:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+/* --- 3. Bootstrap Overrides & Focus States --- */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    /* Use our primary color for the focus ring */
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--primary-color);
+}
+
+.footer {
+    background-color: var(--bg-color);
+}
+
+/* --- 4. Existing Good Styles (Kept) --- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* This adds the smooth transition for your dark mode toggle */
+body, .navbar, .card, .table, .btn, .form-control, .alert, .footer {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}

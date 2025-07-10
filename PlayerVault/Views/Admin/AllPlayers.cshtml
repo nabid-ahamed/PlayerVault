@@ -1,0 +1,60 @@
+﻿@model List<PlayerVault.Models.Player>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "All Approved Players";
+    var selectedUserId = ViewBag.SelectedUserId as int?;
+    var userList = ViewBag.Users as SelectList;
+}
+
+<h2>📋 All Approved Players</h2>
+
+<form method="get" asp-action="AllPlayers" asp-controller="Admin" class="mb-4">
+    <div class="form-inline">
+        <label for="userId" class="me-2 fw-bold">Filter by User:</label>
+        <select name="userId" class="form-select d-inline-block w-auto me-2">
+            <option value="">-- Select User --</option>
+            @foreach (var user in userList)
+            {
+                var isSelected = user.Value == selectedUserId?.ToString() ? "selected" : "";
+                @:<option value="@user.Value" @(user.Value == selectedUserId?.ToString() ? "selected" : "")>@user.Text</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Player Name</th>
+            <th>Position</th>
+            <th>Nationality</th>
+            <th>Age</th>
+            <th>Market Value (€M)</th>
+            <th>Submitted By</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">No players found.</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var player in Model)
+            {
+                <tr>
+                    <td>@player.Name</td>
+                    <td>@player.Position</td>
+                    <td>@player.Nationality</td>
+                    <td>@player.Age</td>
+                    <td>@player.MarketValue</td>
+                    <td>@(player.User?.Username ?? "Unknown")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

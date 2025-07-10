@@ -1,0 +1,59 @@
+﻿@model PlayerVault.ViewModels.EditProfileViewModel
+
+<h2>⚙️ Account Settings</h2>
+
+@* This will now display the "CurrentEmail is required" error until we fix it. *@
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@using (Html.BeginForm("Edit", "Profile", FormMethod.Post, new { @class = "mt-4" }))
+{
+    @Html.AntiForgeryToken()
+
+    @* --- THE FIX --- *@
+    @* This hidden field ensures the CurrentEmail value is sent back to the server. *@
+    @Html.HiddenFor(m => m.CurrentEmail)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mt-3">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <hr />
+    <h5>🔒 Change Password (optional)</h5>
+
+    <div class="form-group mt-3">
+        @Html.LabelFor(m => m.CurrentPassword)
+        @Html.PasswordFor(m => m.CurrentPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CurrentPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mt-3">
+        @Html.LabelFor(m => m.NewPassword)
+        @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mt-3">
+        @Html.LabelFor(m => m.ConfirmPassword)
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4">💾 Save Changes</button>
+}
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

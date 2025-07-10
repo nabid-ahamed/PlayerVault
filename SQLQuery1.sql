@@ -1,0 +1,3 @@
+﻿DELETE FROM Users WHERE Id = 1;
+DELETE FROM Users WHERE Id = 1;
+DELETE FROM Users WHERE Id = 1;

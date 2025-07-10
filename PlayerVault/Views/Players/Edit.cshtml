@@ -1,0 +1,51 @@
+﻿@model PlayerVault.Models.Player
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Player</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Nationality" class="control-label"></label>
+        <input asp-for="Nationality" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Age" class="control-label"></label>
+        <input asp-for="Age" class="form-control" />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Position,
+                     new SelectList(new List<string>
+            {
+            "-- Select Position --",
+            "Goalkeeper",
+            "Center Back",
+            "Right Back",
+            "Left Back",
+            "Defensive Midfielder",
+            "Central Midfielder",
+            "Attacking Midfielder",
+            "Left Winger",
+            "Right Winger",
+            "Center Forward"
+            }),
+                     htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+        </div>
+    </div> 
+    <div class="form-group">
+        <label asp-for="MarketValue" class="control-label"></label>
+        <input asp-for="MarketValue" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

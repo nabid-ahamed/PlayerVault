@@ -1,0 +1,26 @@
+﻿<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Age</th>
+            <th>Submitted By</th> <!-- New column -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            <tr>
+                <td>@player.Name</td>
+                <td>@player.Position</td>
+                <td>@player.Age</td>
+                <td>@player.User?.Username</td> <!-- 👈 This shows who submitted -->
+                <td>
+                    <a href="/Admin/Approve/@player.Id" class="btn btn-success">Approve</a>
+                    <a href="/Admin/Reject/@player.Id" class="btn btn-danger">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

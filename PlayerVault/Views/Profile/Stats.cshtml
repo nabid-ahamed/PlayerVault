@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "My Stats";
+}
+
+<h2>📊 Team Statistics</h2>
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>Total Players</th>
+        <td>@ViewBag.Total</td>
+    </tr>
+    <tr>
+        <th>Approved</th>
+        <td>@ViewBag.Approved</td>
+    </tr>
+    <tr>
+        <th>Pending</th>
+        <td>@ViewBag.Pending</td>
+    </tr>
+    <tr>
+        <th>Average Age</th>
+        <td>@String.Format("{0:0.##}", ViewBag.AverageAge) y/o</td>
+    </tr>
+    <tr>
+        <th>Average Market Value (€M)</th>
+        <td>@String.Format("{0:0.##}", ViewBag.AverageValue) M</td>
+    </tr>
+    <tr>
+        <th>Most Common Position</th>
+        <td>@ViewBag.MostCommonPosition</td>
+    </tr>
+    <tr>
+        <th>Most Common Nationality</th>
+        <td>@ViewBag.MostCommonNationality</td>
+    </tr>
+    <tr>
+        <th>Youngest Player</th>
+        <td>@ViewBag.Youngest?.Name (@ViewBag.Youngest?.Age y/o)</td>
+    </tr>
+    <tr>
+        <th>Oldest Player</th>
+        <td>@ViewBag.Oldest?.Name (@ViewBag.Oldest?.Age y/o)</td>
+    </tr>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">⬅ Back to Profile</a>
